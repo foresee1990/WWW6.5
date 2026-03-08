@@ -107,11 +107,13 @@ contract SecureEtherPiggyBank {
         
         // 重置请求状态
         request.completed = true;
+        // 清零金额
         request.amount = 0;
-
         // 扣除余额并转账
         balance[msg.sender] -= amount;
-        payable(msg.sender).transfer(amount);
+        // 使用 call 替代 transfer
+        (bool success, ) = payable(msg.sender).call{value: amount}("");
+        require(success, "Transfer failed");
     }
 
     // 查询每个成员的银行账户余额
