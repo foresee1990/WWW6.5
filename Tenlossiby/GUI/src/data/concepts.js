@@ -63,7 +63,32 @@ export const gasEstimates = {
     subscribe17: 50000,
     pauseSubscription17: 30000,
     resumeSubscription17: 30000,
-    isSubscribed17: 0  // 查询订阅状态（view函数，不消耗Gas）
+    isSubscribed17: 0,  // 查询订阅状态（view函数，不消耗Gas）
+    // Day 18 - OracleContract
+    checkRainfall18: 0,        // 查询天气（view函数）
+    purchaseInsurance18: 45000, // 购买保险
+    claimPayout18: 50000,       // 申请赔付
+    fastForwardTime18: 0,       // 快进时间（模拟操作）
+    withdrawBalance18: 35000,   // 提取余额
+    // Day 19 - SignThis
+    generateSignature19: 0,     // 前端模拟签名（不消耗Gas）
+    enterEvent19: 65000,        // 参与活动（写操作）
+    checkEntered19: 0,          // 查看参与状态（view函数）
+    getParticipants19: 0,        // 获取参与者列表（view函数）
+    // Day 20 - ReentryAttack
+    deposit20: 45000,
+    vulnerableWithdraw20: 50000,
+    safeWithdraw20: 35000,
+    checkVaultStatus20: 0,  // view 函数
+    // Day 21 - SimpleNFT
+    mint21: 150000,
+    transferFrom21: 80000,
+    safeTransferFrom21: 85000,
+    approve21: 45000,
+    setApprovalForAll21: 35000,
+    balanceOf21: 0,
+    getApproved21: 0,
+    ownerOf21: 0
 };
 
 export const ethPricePerGwei = 0.00000004;
@@ -856,7 +881,35 @@ export const getHint = (conceptKey) => {
         abi_encoding: "🔢 ABI 编码完成！函数选择器是 keccak256 哈希的前4字节。👉 切换 staticcall 模式查询数据！",
         staticcall: "👁️ 静态调用成功！不消耗 Gas 的只读操作。👉 尝试切换到 achievement 插件！",
         dynamic_delegation: "🔄 动态委托系统运行中！一个核心管理多个插件。👉 在不同插件间切换体验互操作！",
-        contract_interop: "🌐 合约互操作掌握！多个合约无缝协作。🎉 你已掌握 Day 16 所有核心概念！"
+        contract_interop: "🌐 合约互操作掌握！多个合约无缝协作。🎉 你已掌握 Day 16 所有核心概念！",
+        // ========== Day 18 提示 ==========
+        oracle_interface: "🔌 太棒了！你了解了 Chainlink 预言机接口！AggregatorV3Interface 是标准接口。👉 查看 ETH/USD 价格面板学习价格预言机！",
+        random_generation: "🎲 太棒了！你看到了伪随机数生成！👉 购买保险来体验价格转换！",
+        eth_usd_oracle: "💰 太棒了！你使用了 ETH/USD 价格预言机！注意 Chainlink 返回 8 位小数精度。👉 购买保险体验价格转换！",
+        purchase_insurance: "🛡️ 保险购买成功！支付保费获得保障。👉 当干旱发生时申请赔付体验参数化保险！",
+        price_conversion: "🔄 太棒了！你了解了价格转换！1e26 = 1e18 × 1e8 抵消 Chainlink 精度。👉 申请赔付体验参数化保险！",
+        parametric_payout: "💸 赔付成功！参数化保险自动执行无需审核。👉 了解冷却期机制防止滥用！",
+        cooldown_mechanism: "⏱️ 你了解了冷却期机制！24小时内只能索赔一次。👉 快进时间或查看合约余额！",
+        contract_balance: "🏦 你查看了合约余额！管理员可提取保险池资金。🎉 你已掌握 Day 18 所有核心概念！",
+        // ========== Day 19 提示 ==========
+        keccak256_hash: "🔐 你使用了 Keccak256 哈希算法！这是以太坊的标准哈希函数。👉 点击展开签名详情查看 R/S/V 组件！",
+        ecdsa_signature: "🎯 你了解了 ECDSA 椭圆曲线签名！这是以太坊的数字签名算法。👉 点击生成签名来体验完整流程！",
+        signature_rsv: "📝 你分解了签名的 R/S/V 组件！以太坊签名由 65 字节组成。👉 使用签名参与活动来解锁 ecrecover！",
+        eip191_prefix: "📋 你了解了 EIP-191 签名前缀！这是以太坊个人签名的标准。👉 查看参与者列表完成所有概念！",
+        ecrecover: "🔓 你使用了 ecrecover 函数！这是签名者恢复的核心。👉 查看参与者列表了解映射存储！",
+        require_statement: "⚠️ 你使用了 require 验证语句！这是 Solidity 安全编程的基础。👉 查看参与者列表完成所有概念！",
+        mapping_storage: "🗂️ 你使用了映射存储！mapping 是 Solidity 高效的键值对结构。🎉 你已掌握 Day 19 所有核心概念！",
+        msg_sender: "👤 你使用了 msg.sender！这是 Solidity 的全局变量，表示当前调用者地址。👉 点击展开签名详情查看 R/S/V 组件！",
+        // ========== Day 21 提示 ==========
+        ierc721_interface: "🔌 你了解了ERC721标准接口！👉 点击铸造按钮创建你的第一个NFT！",
+        mint_function: "🔨 你使用了铸造函数！👉 完成铸造查看计数器如何工作！",
+        token_id_counter: "🔢 你了解了代币ID计数器！👉 查询地址余额了解持有情况！",
+        token_uri: "🔗 你查看了Token URI！👉 选中一个NFT，尝试转移NFT！",
+        balance_of: "📊 你查询了NFT余额！👉 查看代币授权状态了解approve机制！",
+        transfer_from: "🔄 你执行了NFT转移！👉 尝试授权其他地址管理你的NFT！",
+        approve_mechanism: "🔑 你使用了授权机制！👉 尝试设置操作员授权！",
+        approval_for_all: "👥 你设置了操作员授权！👉 尝试使用安全转移功能！",
+        safe_transfer: "🛡️ 你使用了安全转移！🎉 恭喜完成Day21所有学习！"
     };
     return hints[conceptKey] || "📖 点击其他概念标签查看更多详细解释。";
 };
@@ -1733,6 +1786,606 @@ export const getDay17ExplanationHint = (conceptKey) => {
         fallback_function: "📖 fallback 函数是代理合约的核心。当用户调用代理合约中不存在的函数时，fallback 会被触发。它使用 delegatecall 将调用转发给逻辑合约，并返回执行结果。这是实现透明代理的关键。",
         data_persistence: "📖 数据持久化是可升级合约的重要特性。由于所有数据都存储在代理合约中，升级逻辑合约不会影响已有数据。用户升级前创建的订阅、计划等数据在升级后仍然可以正常访问和使用。",
         version_control: "📖 版本控制展示了如何在升级中添加新功能。V2 在 V1 的基础上新增了 pauseSubscription 和 resumeSubscription 功能，但保持数据格式兼容。这展示了可升级合约的灵活性和扩展性。"
+    };
+    return hints[conceptKey] || "📖 点击其他概念标签查看更多详细解释。";
+};
+
+// ========== Day 18 概念定义 ==========
+export const day18ConceptDefinitions = {
+    oracle_interface: {
+        name: "Chainlink接口",
+        icon: "🔌",
+        unlockAt: 1,
+        message: "你了解了 Chainlink 预言机接口！AggregatorV3Interface 是 Chainlink 标准接口，让智能合约能够获取链外数据。",
+        code: `interface AggregatorV3Interface {
+    function latestRoundData() external view returns (
+        uint80 roundId,
+        int256 answer,
+        uint256 startedAt,
+        uint256 updatedAt,
+        uint80 answeredInRound
+    );
+}`
+    },
+    eth_usd_oracle: {
+        name: "ETH/USD喂价",
+        icon: "💰",
+        unlockAt: 2,
+        message: "你使用了 ETH/USD 价格预言机！Chainlink 返回的价格有 8 位小数精度，需要正确处理。",
+        code: `function getEthPrice() public view returns (uint256) {
+    (, int256 price, , , ) = ethUsdPriceFeed.latestRoundData();
+    // price = 300000000000 表示 $3000.00
+    return uint256(price);
+}`
+    },
+    random_generation: {
+        name: "伪随机数生成",
+        icon: "🎲",
+        unlockAt: 3,
+        message: "你看到了伪随机数生成！使用区块信息生成随机数，适合测试但不适合生产环境。",
+        code: `function _rainfall() public view returns (int256) {
+    uint256 randomFactor = uint256(keccak256(abi.encodePacked(
+        block.timestamp,
+        block.coinbase,
+        block.number
+    ))) % 1000;
+    return int256(randomFactor);
+}`
+    },
+    purchase_insurance: {
+        name: "购买保险",
+        icon: "🛡️",
+        unlockAt: 4,
+        message: "你购买了保险！支付保费后获得保障，当条件满足时可获得赔付。",
+        code: `function purchaseInsurance() external payable {
+    require(msg.value >= premiumInEth, "Insufficient premium");
+    require(!hasInsurance[msg.sender], "Already insured");
+    hasInsurance[msg.sender] = true;
+    emit InsurancePurchased(msg.sender, msg.value);
+}`
+    },
+    price_conversion: {
+        name: "价格转换",
+        icon: "🔄",
+        unlockAt: 5,
+        message: "你了解了价格转换！Chainlink 价格有 8 位小数，需要使用 1e26 来正确计算 ETH 数量。",
+        code: `uint256 premiumInEth = (INSURANCE_PREMIUM_USD * 1e26) / ethPrice;
+// 1e26 = 1e18(wei精度) × 1e8(Chainlink精度)
+// 例如: (10 * 1e26) / 300000000000 = 0.0033 ETH`
+    },
+    parametric_payout: {
+        name: "参数化赔付",
+        icon: "💸",
+        unlockAt: 6,
+        message: "你体验了参数化赔付！无需人工审核，条件满足自动赔付，这是区块链保险的核心优势。",
+        code: `if (currentRainfall < RAINFALL_THRESHOLD) {
+    // 自动执行赔付
+    (bool success, ) = msg.sender.call{value: payoutInEth}("");
+    require(success, "Transfer failed");
+    emit ClaimPaid(msg.sender, payoutInEth);
+}`
+    },
+    cooldown_mechanism: {
+        name: "冷却期机制",
+        icon: "⏱️",
+        unlockAt: 7,
+        message: "你了解了冷却期机制！24小时内只能索赔一次，防止滥用和频繁索赔。",
+        code: `require(
+    block.timestamp >= lastClaimTimestamp[msg.sender] + 1 days,
+    "Must wait 24h between claims"
+);
+lastClaimTimestamp[msg.sender] = block.timestamp;`
+    },
+    contract_balance: {
+        name: "合约余额",
+        icon: "🏦",
+        unlockAt: 8,
+        message: "你查看了合约余额！管理员可以提取合约中的 ETH，这是保险池资金管理的重要功能。",
+        code: `function withdraw() external onlyOwner {
+    payable(owner()).transfer(address(this).balance);
+}
+
+function getBalance() public view returns (uint256) {
+    return address(this).balance;
+}`
+    }
+};
+
+// ========== Day 19 概念定义 ==========
+export const day19ConceptDefinitions = {
+    keccak256_hash: {
+        name: "Keccak256哈希算法",
+        icon: "🔐",
+        unlockAt: 1,
+        message: "你使用了 Keccak256 哈希算法！这是以太坊标准的哈希函数，将任意数据转换为固定长度的哈希值。",
+        code: `bytes32 messageHash = keccak256(abi.encodePacked(_user));
+// Keccak256 是以太坊原生哈希函数
+// 输入任意长度数据，输出 32 字节固定长度哈希`
+    },
+    ecdsa_signature: {
+        name: "ECDSA椭圆曲线签名",
+        icon: "🎯",
+        unlockAt: 2,
+        message: "你了解了 ECDSA 椭圆曲线签名！这是以太坊使用的数字签名算法，基于椭圆曲线密码学实现身份验证。",
+        code: `// ECDSA = Elliptic Curve Digital Signature Algorithm
+// 使用私钥签名，公钥验证
+// 签名后得到 r, s, v 三个值`
+    },
+    signature_rsv: {
+        name: "签名组件R/S/V",
+        icon: "📝",
+        unlockAt: 3,
+        message: "你分解了签名的 R/S/V 组件！以太坊签名由 65 字节组成：r(32) + s(32) + v(1)。",
+        code: `(bytes32 r, bytes32 s, uint8 v) = splitSignature(sig);
+// r: 签名前32字节
+// s: 签名中间32字节
+// v: 最后1字节，用于恢复公钥`
+    },
+    eip191_prefix: {
+        name: "EIP-191以太坊签名前缀",
+        icon: "📋",
+        unlockAt: 5,
+        message: "你了解了 EIP-191 签名前缀！\\x19Ethereum Signed Message:\\n32 是以太坊个人签名的标准前缀，防止签名被滥用。",
+        code: `bytes32 ethSignedMessageHash = keccak256(
+    abi.encodePacked(
+        "\\x19Ethereum Signed Message:\\n32",
+        messageHash
+    )
+);
+// 前缀确保签名只能用于以太坊消息`
+    },
+    ecrecover: {
+        name: "签名者恢复函数",
+        icon: "🔓",
+        unlockAt: 5,
+        message: "你使用了 ecrecover 函数！这是 Solidity 内置函数，通过签名数据恢复签名者的以太坊地址。",
+        code: `address signer = ecrecover(
+    ethSignedMessageHash,
+    v,
+    r,
+    s
+);
+// ecrecover 是 EVM 内置函数
+// 输入签名哈希和 r,s,v，返回签名者地址`
+    },
+    require_statement: {
+        name: "Require验证语句",
+        icon: "⚠️",
+        unlockAt: 6,
+        message: "你使用了 require 验证语句！这是 Solidity 中最常用的条件检查，不满足时回滚交易并显示错误消息。",
+        code: `require(!hasEntered[msg.sender], "Already entered");
+// 第一个参数：条件表达式
+// 第二个参数：错误消息（可选）
+// 条件为 false 时，交易回滚`
+    },
+    mapping_storage: {
+        name: "映射存储",
+        icon: "🗂️",
+        unlockAt: 7,
+        message: "你使用了映射存储！mapping 是 Solidity 中的键值对数据结构，用于高效存储用户状态。",
+        code: `mapping(address => bool) public hasEntered;
+// mapping(keyType => valueType)
+// keyType: 地址类型
+// valueType: 布尔类型（是否已参与）
+hasEntered[userAddress] = true;  // 写入`
+    },
+    msg_sender: {
+        name: "消息发送者",
+        icon: "👤",
+        unlockAt: 8,
+        message: "你使用了 msg.sender！这是 Solidity 中的全局变量，表示当前交易的发送者地址。",
+        code: `constructor() {
+    organizer = msg.sender;
+}
+// msg.sender: 当前调用者地址
+// 在构造函数中，部署者成为组织者`
+    }
+};
+
+// ========== Day 18 提示 ==========
+export const getDay18Hint = (conceptKey) => {
+    const hints = {
+        oracle_interface: "🔌 你了解了 Chainlink 预言机接口！AggregatorV3Interface 是标准接口。👉 查看 ETH/USD 价格面板学习价格预言机！",
+        eth_usd_oracle: "💰 你使用了 ETH/USD 价格预言机！注意 Chainlink 返回 8 位小数精度。👉 购买保险体验价格转换！",
+        random_generation: "🎲 你看到了伪随机数生成！使用区块信息生成随机降雨量。👉 更新天气数据体验随机性！",
+        purchase_insurance: "🛡️ 保险购买成功！支付保费获得保障。👉 当干旱发生时申请赔付！",
+        price_conversion: "🔄 你了解了价格转换！1e26 = 1e18 × 1e8 抵消 Chainlink 精度。👉 申请赔付体验参数化保险！",
+        parametric_payout: "💸 赔付成功！参数化保险自动执行无需审核。👉 了解冷却期机制防止滥用！",
+        cooldown_mechanism: "⏱️ 你了解了冷却期！24小时内只能索赔一次。👉 快进时间或查看合约余额！",
+        contract_balance: "🏦 你查看了合约余额！管理员可提取保险池资金。🎉 你已掌握 Day 18 所有核心概念！"
+    };
+    return hints[conceptKey] || "📖 点击其他概念标签查看更多详细解释。";
+};
+
+// ========== Day 18 解释提示 ==========
+export const getDay18ExplanationHint = (conceptKey) => {
+    const hints = {
+        oracle_interface: "📖 Chainlink 预言机接口(AggregatorV3Interface)是行业标准，定义了 latestRoundData() 等函数。它让智能合约能够安全地获取链外数据，如价格、天气等。接口标准化确保不同预言机可以互换使用。",
+        eth_usd_oracle: "📖 ETH/USD 价格预言机返回的价格有 8 位小数精度。例如 $3000 返回 300000000000。这是因为金融数据通常需要高精度，而 Solidity 不支持浮点数。使用时需要注意精度转换。",
+        random_generation: "📖 伪随机数生成使用区块信息（timestamp, coinbase, number）作为种子。这种方式适合测试和演示，但不适合生产环境，因为矿工可以影响结果。生产环境应使用 Chainlink VRF 等安全随机数方案。",
+        purchase_insurance: "📖 购买保险函数检查用户支付足够的 ETH 且尚未投保。保费根据当前 ETH 价格动态计算，确保合约收到正确金额。投保状态存储在 hasInsurance 映射中，永久记录在区块链上。",
+        price_conversion: "📖 价格转换公式 (USD × 1e26) / ETH价格 考虑了 Chainlink 的 8 位小数精度。1e26 = 1e18(wei精度) × 1e8(价格精度)。例如 $10 保费在 ETH $3000 时约为 0.0033 ETH。",
+        parametric_payout: "📖 参数化保险(Parametric Insurance)是区块链保险的核心创新。传统保险需要人工审核理赔，而参数保险根据预设条件（如降雨量 < 500mm）自动赔付，无需信任第三方，大幅降低运营成本。",
+        cooldown_mechanism: "📖 冷却期机制使用 block.timestamp 记录上次索赔时间，限制 24 小时内只能索赔一次。这是防止滥用的安全措施。在真实区块链上时间无法篡改，确保机制可靠。",
+        contract_balance: "📖 合约余额管理是 DeFi 应用的基础。管理员可以提取合约中的 ETH，用于保险池资金管理。balance 操作需要注意重入攻击防护，使用 checks-effects-interactions 模式。"
+    };
+    return hints[conceptKey] || "📖 点击其他概念标签查看更多详细解释。";
+};
+
+// ========== Day 19 提示 ==========
+export const getDay19Hint = (conceptKey) => {
+    const hints = {
+        keccak256_hash: "🔐 你使用了 Keccak256 哈希算法！这是以太坊标准的哈希函数，将任意数据转换为 32 字节哈希值。👉 点击展开签名详情查看 R/S/V 组件！",
+        ecdsa_signature: "🎯 你了解了 ECDSA 椭圆曲线签名！这是以太坊使用的数字签名算法，基于椭圆曲线密码学。👉 点击生成签名来体验完整流程！",
+        signature_rsv: "📝 你分解了签名的 R/S/V 组件！以太坊签名由 65 字节组成：r(32) + s(32) + v(1)。👉 使用签名参与活动来解锁 ecrecover！",
+        eip191_prefix: "📋 你了解了 EIP-191 签名前缀！\\x19Ethereum Signed Message:\\n32 是以太坊个人签名的标准，防止签名被滥用。👉 查看参与者列表完成所有概念！",
+        ecrecover: "🔓 你使用了 ecrecover 函数！这是 Solidity 内置函数，通过签名恢复签名者地址。👉 查看参与者列表了解映射存储！",
+        require_statement: "⚠️ 你使用了 require 验证语句！这是 Solidity 安全编程的基础，不满足条件时回滚交易。👉 查看参与者列表完成所有概念！",
+        mapping_storage: "🗂️ 你使用了映射存储！mapping 是 Solidity 高效的键值对结构，用于存储用户参与状态。🎉 你已掌握 Day 19 所有核心概念！",
+        msg_sender: "👤 你使用了 msg.sender！这是 Solidity 的全局变量，表示当前交易的发送者地址。👉 点击展开签名详情查看 R/S/V 组件！"
+    };
+    return hints[conceptKey] || "📖 点击其他概念标签查看更多详细解释。";
+};
+
+// ========== Day 19 解释提示 ==========
+export const getDay19ExplanationHint = (conceptKey) => {
+    const hints = {
+        keccak256_hash: "📖 Keccak256 是以太坊原生的哈希函数（SHA-3 算法变体）。它将任意长度的输入转换为 32 字节的固定长度输出。在签名验证中，我们需要先对用户地址进行哈希，生成唯一的消息标识。",
+        ecdsa_signature: "📖 ECDSA（椭圆曲线数字签名算法）是以太坊使用的签名方案。它基于椭圆曲线密码学，使用私钥生成签名，任何人可以用公钥验证签名。签名过程不可逆，无法从签名推导出私钥。",
+        signature_rsv: "📖 以太坊签名由 65 字节组成：r（32字节）+ s（32字节）+ v（1字节）。r 和 s 是签名曲线坐标，v 是恢复标识符（27 或 28）。通过 v 可以推导出对应的公钥地址。",
+        eip191_prefix: "📖 EIP-191 定义了以太坊签名的标准格式：\\x19Ethereum Signed Message:\\n32 前缀。这个前缀确保签名只能用于以太坊消息，防止签名被滥用到其他区块链或应用中。",
+        ecrecover: "📖 ecrecover 是 EVM 内置函数，用于从签名数据恢复签名者地址。它接受消息哈希和 r、s、v 作为参数，返回签名的公钥对应的地址。这是签名验证的核心函数。",
+        require_statement: "📖 require 是 Solidity 中最常用的错误处理语句。第一个参数是布尔条件，第二个参数是可选的错误消息。当条件为 false 时，交易回滚，消耗所有 Gas。",
+        mapping_storage: "📖 mapping 是 Solidity 中的键值对数据结构，类似于哈希表。mapping(address => bool) 表示地址到布尔值的映射。访问不存在的键会返回默认值（false），写入时会创建键值对。",
+        msg_sender: "📖 msg.sender 是 Solidity 的全局变量，表示当前调用者的地址。在构造函数中，msg.sender 是合约的部署者，因此成为组织者。这是权限控制的基础。"
+    };
+    return hints[conceptKey] || "📖 点击其他概念标签查看更多详细解释。";
+};
+
+// ========== Day 20 概念定义 ==========
+export const day20ConceptDefinitions = {
+    reentrancy_attack: {
+        name: "重入攻击",
+        icon: "🔥",
+        unlockAt: 1,
+        message: "你了解了重入攻击！这是最著名的智能合约漏洞，攻击者通过递归调用窃取资金。",
+        code: `// 重入攻击原理:
+// 1. 攻击者存入 1 ETH
+// 2. 调用 withdraw() 提款
+// 3. 合约发送 ETH，触发攻击者的 receive()
+// 4. receive() 再次调用 withdraw()
+// 5. 重复直到资金耗尽！
+receive() external payable {
+    if (attackCount < 5) {
+        targetVault.vulnerableWithdraw(); // 递归调用！
+    }
+}`
+    },
+    fallback_receive: {
+        name: "回退函数",
+        icon: "⚡",
+        unlockAt: 2,
+        message: "你使用了回退函数！receive() 在合约接收 ETH 时自动触发，是重入攻击的入口点。",
+        code: `// receive() 函数 - 接收 ETH 时触发
+receive() external payable {
+    attackCount++;
+    
+    // 如果金库还有余额，继续攻击
+    if (address(targetVault).balance >= 1 ether) {
+        targetVault.vulnerableWithdraw(); // 再次提款！
+    }
+}`
+    },
+    vulnerable_withdraw: {
+        name: "漏洞提款函数",
+        icon: "🔴",
+        unlockAt: 3,
+        message: "你发现了漏洞提款函数！它先发送 ETH 后更新余额，让攻击者有机可乘。",
+        code: `// ❌ 有漏洞的代码
+function vulnerableWithdraw() external {
+    uint256 amount = goldBalance[msg.sender];
+    require(amount > 0, "Nothing");
+
+    // ⚠️ 漏洞: 先发送 ETH
+    (bool sent, ) = msg.sender.call{value: amount}("");
+    require(sent, "Failed");
+
+    // ❌ 后更新余额 - 攻击者可以重入！
+    goldBalance[msg.sender] = 0;
+}`
+    },
+    deposit_function: {
+        name: "存款函数",
+        icon: "💰",
+        unlockAt: 4,
+        message: "你使用了存款函数！用户存入 ETH 增加余额，是攻击的前提条件。",
+        code: `// 存款函数
+function deposit() external payable {
+    require(msg.value > 0, "Deposit > 0");
+    goldBalance[msg.sender] += msg.value;
+}
+
+// 调用方式:
+// vault.deposit{value: 1 ether}();`
+    },
+    checks_effects_interactions: {
+        name: "CEI模式",
+        icon: "✅",
+        unlockAt: 5,
+        message: "你了解了 CEI 模式！Checks-Effects-Interactions 是防止重入攻击的核心设计模式。",
+        code: `// ✅ Checks-Effects-Interactions 模式
+function safeWithdraw() external {
+    // 1. Checks: 验证条件
+    uint256 amount = goldBalance[msg.sender];
+    require(amount > 0, "Nothing");
+
+    // 2. Effects: 先更新状态 ✅
+    goldBalance[msg.sender] = 0;
+
+    // 3. Interactions: 最后外部调用 ✅
+    (bool sent, ) = msg.sender.call{value: amount}("");
+    require(sent, "Failed");
+}`
+    },
+    reentrancy_guard: {
+        name: "重入锁",
+        icon: "🔒",
+        unlockAt: 6,
+        message: "你使用了重入锁！nonReentrant 修饰符阻止函数在锁定期间被重入调用。",
+        code: `// 重入锁实现
+uint256 private _status;
+uint256 private constant _NOT_ENTERED = 1;
+uint256 private constant _ENTERED = 2;
+
+modifier nonReentrant() {
+    require(_status != _ENTERED, "Blocked!");
+    _status = _ENTERED;      // 🔒 锁定
+    _;
+    _status = _NOT_ENTERED;  // 🔓 解锁
+}
+
+function safeWithdraw() external nonReentrant {
+    // 函数体...
+}`
+    },
+    contract_balance: {
+        name: "合约余额",
+        icon: "🏦",
+        unlockAt: 7,
+        message: "你查看了合约余额！address(this).balance 返回合约持有的 ETH 数量。",
+        code: `// 查询合约余额
+function getBalance() public view returns (uint256) {
+    return address(this).balance;
+}
+
+// 在攻击合约中检查目标余额
+if (address(targetVault).balance >= 1 ether) {
+    // 继续攻击...
+}`
+    },
+    code_comparison: {
+        name: "代码对比",
+        icon: "📜",
+        unlockAt: 8,
+        message: "你对比了漏洞代码和安全代码！理解差异是学习安全编程的关键。",
+        code: `// ❌ 漏洞版本: 先发送 ETH，后更新余额
+(bool sent, ) = msg.sender.call{value: amount}("");
+goldBalance[msg.sender] = 0; // 攻击者已重入！
+
+// ✅ 安全版本: 先更新余额，后发送 ETH
+goldBalance[msg.sender] = 0; // 先更新！(nonReentrant 保护)
+(bool sent, ) = msg.sender.call{value: amount}("");`
+    }
+};
+
+// ========== Day 20 提示 ==========
+export const getDay20Hint = (conceptKey) => {
+    const hints = {
+        reentrancy_attack: "🔥 你了解了重入攻击！这是最著名的智能合约漏洞。👉 存入ETH到金库开始攻击演示！",
+        fallback_receive: "⚡ 你使用了回退函数！receive() 在接收ETH时触发，是重入攻击的入口点。👉 查看防护机制了解如何修复！",
+        vulnerable_withdraw: "🔴 你发现了漏洞提款函数！它先发送ETH后更新余额。👉 查看防护机制了解如何修复！",
+        deposit_function: "💰 你使用了存款函数！用户存入ETH增加余额。👉 现在尝试攻击漏洞版本！",
+        checks_effects_interactions: "✅ 你了解了CEI模式！先更新状态再发送ETH是防止重入的关键。👉 尝试攻击安全版本！",
+        reentrancy_guard: "🔒 你使用了重入锁！nonReentrant修饰符阻止函数重入调用。👉 查看代码对比巩固知识！",
+        contract_balance: "🏦 你查看了合约余额！address(this).balance返回合约ETH数量。🎉 恭喜完成Day20全部学习！",
+        code_comparison: "📜 你对比了漏洞代码和安全代码！理解差异是学习安全编程的关键。👉 切换到'金库管理员'查看金库状态！"
+    };
+    return hints[conceptKey] || "📖 点击其他概念标签查看更多详细解释。";
+};
+
+// ========== Day 20 解释提示 ==========
+export const getDay20ExplanationHint = (conceptKey) => {
+    const hints = {
+        reentrancy_attack: "📖 重入攻击(Reentrancy Attack)是智能合约最著名的漏洞。攻击者利用合约在发送ETH后、更新状态前的窗口期，通过递归调用重复提款。2016年的The DAO攻击就是利用此漏洞，损失360万ETH，导致以太坊硬分叉。",
+        fallback_receive: "📖 receive() 是 Solidity 的特殊函数，当合约接收 ETH 且没有附带数据时触发。在重入攻击中，攻击者的 receive() 函数会再次调用目标合约的提款函数，形成递归调用链。这是重入攻击的核心机制。",
+        vulnerable_withdraw: "📖 漏洞提款函数违反了 Checks-Effects-Interactions 模式。它先执行外部调用（发送ETH），后更新状态（清零余额）。当外部调用触发攻击者的 receive() 时，余额还未更新，攻击者可以再次提款。",
+        deposit_function: "📖 存款函数是重入攻击的前提条件。攻击者必须先存入一定数量的 ETH，获得提款资格。deposit() 使用 payable 修饰符接收 ETH，并使用 require 验证金额大于0。",
+        checks_effects_interactions: "📖 CEI模式是 Solidity 安全编程的黄金法则。Checks（检查条件）→ Effects（更新状态）→ Interactions（外部调用）。关键是先更新状态再外部调用，这样即使被重入，状态已经是最新的，攻击者无法重复获利。",
+        reentrancy_guard: "📖 重入锁(Reentrancy Guard)使用状态变量跟踪函数执行状态。_NOT_ENTERED(1) 表示未锁定，_ENTERED(2) 表示已锁定。modifier 在函数执行前锁定，执行后解锁。如果函数被重入调用，require 会阻止执行。OpenZeppelin 提供了标准实现。",
+        contract_balance: "📖 address(this).balance 返回合约当前持有的 ETH 数量（以 wei 为单位）。在攻击合约中，它用于判断目标金库是否还有资金可以继续攻击。在管理函数中，它用于查询和提取合约资金。",
+        code_comparison: "📖 通过对比漏洞代码和安全代码，可以清晰看到修复方法：1) 调整代码顺序，先更新状态再外部调用；2) 添加 nonReentrant 修饰符作为双重保护。理解这种差异对编写安全智能合约至关重要。",
+        // ========== Day 21 解释提示 ==========
+        ierc721_interface: "📖 IERC721 是 ERC721 代币标准的接口定义，规定了 NFT 合约必须实现的基本功能，包括 balanceOf、ownerOf、transferFrom、approve 等函数。符合此接口的合约可以在所有支持 ERC721 的平台上使用。",
+        mint_function: "📖 铸造函数是创建新 NFT 的核心。它从 0 地址（address(0)）转移代币到新所有者，这是 ERC721 标准中表示铸造的特殊约定。每次铸造都会触发 Transfer 事件，from 为 0 地址。",
+        token_id_counter: "📖 代币 ID 计数器用于生成唯一的 tokenId。通常从 1 开始递增，确保每个 NFT 都有唯一标识。计数器使用 uint256 类型，可以支持几乎无限数量的 NFT。",
+        token_uri: "📖 Token URI 是 NFT 元数据的链接，通常指向 IPFS 上的 JSON 文件。元数据包含 NFT 的名称、描述、图片等信息。这使得 NFT 可以展示丰富的内容，而不仅仅是区块链上的数字。",
+        balance_of: "📖 balanceOf 函数查询地址拥有的 NFT 数量。它使用 _balances 映射实现，时间复杂度为 O(1)。这是 ERC721 标准的基础查询功能，也是所有权管理的核心。",
+        transfer_from: "📖 transferFrom 函数将 NFT 从一个地址转移到另一个地址。调用者必须是被授权者或代币所有者。转移时会清除原有的授权，防止授权滥用。",
+        approve_mechanism: "📖 授权机制允许代币所有者授权其他地址管理特定代币。approve 授权单个代币，getApproved 查询授权状态。这是 NFT 交易市场的基础，允许第三方代为转移代币。",
+        approval_for_all: "📖 操作员授权(setApprovalForAll)允许所有者一次性授权某个地址管理其所有代币。这比逐个授权更高效，常用于 NFT 交易平台的批量操作场景。",
+        safe_transfer: "📖 安全转移(safeTransferFrom)在转移前检查接收方是否实现了 IERC721Receiver 接口。这防止 NFT 被意外发送到不支持 ERC721 的合约中而被锁定。这是 ERC721 标准的重要安全特性。"
+    };
+    return hints[conceptKey] || "📖 点击其他概念标签查看更多详细解释。";
+};
+
+// ========== Day 21 概念定义 ==========
+export const day21ConceptDefinitions = {
+    ierc721_interface: {
+        name: "IERC721接口",
+        icon: "🔌",
+        unlockAt: 1,
+        message: "你了解了ERC721标准接口！这是NFT合约必须实现的基本功能规范。",
+        code: `interface IERC721 {
+    event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
+    event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);
+    
+    function balanceOf(address owner) external view returns (uint256);
+    function ownerOf(uint256 tokenId) external view returns (address);
+    function transferFrom(address from, address to, uint256 tokenId) external;
+    function approve(address to, uint256 tokenId) external;
+}`
+    },
+    mint_function: {
+        name: "铸造函数",
+        icon: "🔨",
+        unlockAt: 2,
+        message: "你使用了铸造函数！它从0地址创建新NFT，是代币生命周期的起点。",
+        code: `function mint(address to, string memory uri) public {
+    uint256 tokenId = _tokenIdCounter;
+    _tokenIdCounter++;
+    
+    _owners[tokenId] = to;
+    _balances[to] += 1;
+    _tokenURIs[tokenId] = uri;
+    
+    // from 0 address = 铸造
+    emit Transfer(address(0), to, tokenId);
+}`
+    },
+    token_id_counter: {
+        name: "代币ID计数器",
+        icon: "🔢",
+        unlockAt: 3,
+        message: "你了解了代币ID计数器！它确保每个NFT都有唯一的标识符。",
+        code: `uint256 private _tokenIdCounter = 1;
+
+function mint(address to, string memory uri) public {
+    uint256 tokenId = _tokenIdCounter;
+    _tokenIdCounter++;  // 自动递增
+    
+    _owners[tokenId] = to;
+    // ...
+}`
+    },
+    token_uri: {
+        name: "Token URI",
+        icon: "🔗",
+        unlockAt: 4,
+        message: "你查看了Token URI！它指向NFT的元数据，通常存储在IPFS上。",
+        code: `mapping(uint256 => string) private _tokenURIs;
+
+function tokenURI(uint256 tokenId) public view returns (string memory) {
+    require(_owners[tokenId] != address(0), "Token doesn't exist");
+    return _tokenURIs[tokenId];
+    // 返回如: ipfs://Qm...
+}`
+    },
+    balance_of: {
+        name: "余额查询",
+        icon: "📊",
+        unlockAt: 5,
+        message: "你查询了NFT余额！balanceOf使用映射实现O(1)时间复杂度查询。",
+        code: `mapping(address => uint256) private _balances;
+
+function balanceOf(address owner) public view returns (uint256) {
+    require(owner != address(0), "Zero address");
+    return _balances[owner];  // O(1)查询
+}`
+    },
+    transfer_from: {
+        name: "代币转移",
+        icon: "🔄",
+        unlockAt: 6,
+        message: "你执行了NFT转移！transferFrom需要授权或所有权验证。",
+        code: `function transferFrom(address from, address to, uint256 tokenId) public {
+    require(_isApprovedOrOwner(msg.sender, tokenId), "Not authorized");
+    
+    _transfer(from, to, tokenId);
+}
+
+function _transfer(address from, address to, uint256 tokenId) internal {
+    delete _tokenApprovals[tokenId];  // 清除授权
+    _balances[from] -= 1;
+    _balances[to] += 1;
+    _owners[tokenId] = to;
+    emit Transfer(from, to, tokenId);
+}`
+    },
+    approve_mechanism: {
+        name: "授权机制",
+        icon: "🔑",
+        unlockAt: 7,
+        message: "你使用了授权机制！approve允许其他地址管理你的特定代币。",
+        code: `mapping(uint256 => address) private _tokenApprovals;
+
+function approve(address to, uint256 tokenId) public {
+    address owner = ownerOf(tokenId);
+    require(msg.sender == owner || 
+            isApprovedForAll(owner, msg.sender), "Not authorized");
+    
+    _tokenApprovals[tokenId] = to;
+    emit Approval(owner, to, tokenId);
+}`
+    },
+    approval_for_all: {
+        name: "操作员授权",
+        icon: "👥",
+        unlockAt: 8,
+        message: "你设置了操作员授权！setApprovalForAll允许地址管理你的所有代币。",
+        code: `mapping(address => mapping(address => bool)) private _operatorApprovals;
+
+function setApprovalForAll(address operator, bool approved) public {
+    require(operator != msg.sender, "Self approval");
+    _operatorApprovals[msg.sender][operator] = approved;
+    emit ApprovalForAll(msg.sender, operator, approved);
+}`
+    },
+    safe_transfer: {
+        name: "安全转移",
+        icon: "🛡️",
+        unlockAt: 9,
+        message: "你使用了安全转移！safeTransferFrom检查接收方是否支持ERC721。",
+        code: `function safeTransferFrom(address from, address to, uint256 tokenId) public {
+    require(_isApprovedOrOwner(msg.sender, tokenId), "Not authorized");
+    _safeTransfer(from, to, tokenId, "");
+}
+
+function _safeTransfer(address from, address to, uint256 tokenId, bytes memory data) internal {
+    _transfer(from, to, tokenId);
+    // 检查接收方是否支持 ERC721
+    require(_checkOnERC721Received(from, to, tokenId, data), "Not ERC721Receiver");
+}`
+    }
+};
+
+// ========== Day 21 提示 ==========
+export const getDay21Hint = (conceptKey) => {
+    const hints = {
+        ierc721_interface: "🔌 你了解了ERC721标准接口！👉 点击铸造按钮创建你的第一个NFT！",
+        mint_function: "🔨 你使用了铸造函数！👉 完成铸造查看计数器如何工作！",
+        token_id_counter: "🔢 你了解了代币ID计数器！👉 查询地址余额了解持有情况！",
+        token_uri: "🔗 你查看了Token URI！👉 尝试铸造或转移NFT！",
+        balance_of: "📊 你查询了NFT余额！👉 查看代币授权状态了解approve机制！",
+        transfer_from: "🔄 你执行了NFT转移！👉 尝试授权其他地址管理你的NFT！",
+        approve_mechanism: "🔑 你使用了授权机制！👉 尝试设置操作员授权！",
+        approval_for_all: "👥 你设置了操作员授权！👉 尝试使用安全转移功能！",
+        safe_transfer: "🛡️ 你使用了安全转移！🎉 恭喜完成Day21所有学习！"
+    };
+    return hints[conceptKey] || "📖 点击其他概念标签查看更多详细解释。";
+};
+
+// ========== Day 21 解释提示 ==========
+export const getDay21ExplanationHint = (conceptKey) => {
+    const hints = {
+        ierc721_interface: "📖 IERC721 是 ERC721 代币标准的接口定义，规定了 NFT 合约必须实现的基本功能，包括 balanceOf、ownerOf、transferFrom、approve 等函数。符合此接口的合约可以在所有支持 ERC721 的平台上使用。",
+        mint_function: "📖 铸造函数是创建新 NFT 的核心。它从 0 地址（address(0)）转移代币到新所有者，这是 ERC721 标准中表示铸造的特殊约定。每次铸造都会触发 Transfer 事件，from 为 0 地址。",
+        token_id_counter: "📖 代币 ID 计数器用于生成唯一的 tokenId。通常从 1 开始递增，确保每个 NFT 都有唯一标识。计数器使用 uint256 类型，可以支持几乎无限数量的 NFT。",
+        token_uri: "📖 Token URI 是 NFT 元数据的链接，通常指向 IPFS 上的 JSON 文件。元数据包含 NFT 的名称、描述、图片等信息。这使得 NFT 可以展示丰富的内容，而不仅仅是区块链上的数字。",
+        balance_of: "📖 balanceOf 函数查询地址拥有的 NFT 数量。它使用 _balances 映射实现，时间复杂度为 O(1)。这是 ERC721 标准的基础查询功能，也是所有权管理的核心。",
+        transfer_from: "📖 transferFrom 函数将 NFT 从一个地址转移到另一个地址。调用者必须是被授权者或代币所有者。转移时会清除原有的授权，防止授权滥用。",
+        approve_mechanism: "📖 授权机制允许代币所有者授权其他地址管理特定代币。approve 授权单个代币，getApproved 查询授权状态。这是 NFT 交易市场的基础，允许第三方代为转移代币。",
+        approval_for_all: "📖 操作员授权(setApprovalForAll)允许所有者一次性授权某个地址管理其所有代币。这比逐个授权更高效，常用于 NFT 交易平台的批量操作场景。",
+        safe_transfer: "📖 安全转移(safeTransferFrom)在转移前检查接收方是否实现了 IERC721Receiver 接口。这防止 NFT 被意外发送到不支持 ERC721 的合约中而被锁定。这是 ERC721 标准的重要安全特性。"
     };
     return hints[conceptKey] || "📖 点击其他概念标签查看更多详细解释。";
 };

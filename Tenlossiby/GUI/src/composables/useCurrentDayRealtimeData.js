@@ -16,6 +16,10 @@ import { useDay14 } from './useDay14'
 import { useDay15 } from './useDay15'
 import { useDay16 } from './useDay16'
 import { useDay17 } from './useDay17'
+import { useDay18 } from './useDay18'
+import { useDay19 } from './useDay19'
+import { useDay20 } from './useDay20'
+import { useDay21 } from './useDay21'
 
 /**
  * 获取当前 day 的 realtimeData
@@ -60,6 +64,14 @@ export function useCurrentDayRealtimeData(currentDay) {
         return useDay16().realtimeData.value
       case 17:
         return useDay17().realtimeData.value
+      case 18:
+        return useDay18().realtimeData.value
+      case 19:
+        return useDay19().realtimeData.value
+      case 20:
+        return useDay20().realtimeData.value
+      case 21:
+        return useDay21().realtimeData.value
       default:
         // 对于未实现的 day，返回空数据
         return {

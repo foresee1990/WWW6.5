@@ -51,7 +51,7 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { useConceptInteraction } from '@/composables/useConceptInteraction'
-import { conceptDefinitions, getHint, getConceptExplanationHint, day11ConceptDefinitions, getDay11ExplanationHint, day12ConceptDefinitions, getDay12Hint, getDay12ExplanationHint, day13ConceptDefinitions, getDay13ExplanationHint, day14ConceptDefinitions, getDay14Hint, getDay14ExplanationHint, day15ConceptDefinitions, getDay15Hint, getDay15ExplanationHint, day16ConceptDefinitions, getDay16Hint, getDay16ExplanationHint, day17ConceptDefinitions, getDay17Hint, getDay17ExplanationHint } from '@/data/concepts'
+import { conceptDefinitions, getHint, getConceptExplanationHint, day11ConceptDefinitions, getDay11ExplanationHint, day12ConceptDefinitions, getDay12Hint, getDay12ExplanationHint, day13ConceptDefinitions, getDay13ExplanationHint, day14ConceptDefinitions, getDay14Hint, getDay14ExplanationHint, day15ConceptDefinitions, getDay15Hint, getDay15ExplanationHint, day16ConceptDefinitions, getDay16Hint, getDay16ExplanationHint, day17ConceptDefinitions, getDay17Hint, getDay17ExplanationHint, day18ConceptDefinitions, getDay18Hint, getDay18ExplanationHint, day19ConceptDefinitions, getDay19Hint, getDay19ExplanationHint, day20ConceptDefinitions, getDay20Hint, getDay20ExplanationHint, day21ConceptDefinitions, getDay21Hint, getDay21ExplanationHint } from '@/data/concepts'
 
 const props = defineProps({
   // 当前Day编号
@@ -103,7 +103,7 @@ const {
 } = useConceptInteraction(updateCurrentConcept, props.currentDay)
 
 // 是否显示解锁区域
-const showUnlockArea = computed(() => props.unlockedConcepts.length > 0)
+const showUnlockArea = computed(() => props.unlockedConcepts.length > 0 || props.customHint)
 
 // 是否所有概念都已解锁
 const allConceptsUnlocked = computed(() => props.progressPercentage === 100)
@@ -241,6 +241,18 @@ const getConceptDefinition = (key) => {
   if (props.currentDay === 17) {
     return day17ConceptDefinitions[key]
   }
+  if (props.currentDay === 18) {
+    return day18ConceptDefinitions[key]
+  }
+  if (props.currentDay === 19) {
+    return day19ConceptDefinitions[key]
+  }
+  if (props.currentDay === 20) {
+    return day20ConceptDefinitions[key]
+  }
+  if (props.currentDay === 21) {
+    return day21ConceptDefinitions[key]
+  }
   return conceptDefinitions[key]
 }
 
@@ -286,6 +298,15 @@ const getConceptHint = (key) => {
   }
   if (props.currentDay === 17) {
     return getDay17ExplanationHint(key)
+  }
+  if (props.currentDay === 18) {
+    return getDay18ExplanationHint(key)
+  }
+  if (props.currentDay === 19) {
+    return getDay19ExplanationHint(key)
+  }
+  if (props.currentDay === 20) {
+    return getDay20ExplanationHint(key)
   }
   return getConceptExplanationHint(key)
 }
@@ -350,9 +371,29 @@ const hintText = computed(() => {
     return getDay17Hint(currentConcept.value.key)
   }
 
+  // 优先级 6: Day 18 显示下一步提示
+  if (props.currentDay === 18 && currentConcept.value && !manualConceptKey.value) {
+    return getDay18Hint(currentConcept.value.key)
+  }
+
+  // 优先级 6: Day 19 显示下一步提示
+  if (props.currentDay === 19 && currentConcept.value && !manualConceptKey.value) {
+    return getDay19Hint(currentConcept.value.key)
+  }
+
+  // 优先级 6: Day 20 显示下一步提示
+  if (props.currentDay === 20 && currentConcept.value && !manualConceptKey.value) {
+    return getDay20Hint(currentConcept.value.key)
+  }
+
+  // 优先级 6: Day 21 显示下一步提示
+  if (props.currentDay === 21 && currentConcept.value && !manualConceptKey.value) {
+    return getDay21Hint(currentConcept.value.key)
+  }
+
   // 优先级 7: 用户手动点击概念标签，显示详细解释
   if (manualConceptKey.value && currentConcept.value) {
-    // Day 11、12、13、14、15、16 使用专门的解释提示函数
+    // Day 11、12、13、14、15、16、17、18、19、20 使用专门的解释提示函数
     if (props.currentDay === 11) return getDay11ExplanationHint(currentConcept.value.key)
     if (props.currentDay === 12) return getDay12ExplanationHint(currentConcept.value.key)
     if (props.currentDay === 13) return getDay13ExplanationHint(currentConcept.value.key)
@@ -360,6 +401,10 @@ const hintText = computed(() => {
     if (props.currentDay === 15) return getDay15ExplanationHint(currentConcept.value.key)
     if (props.currentDay === 16) return getDay16ExplanationHint(currentConcept.value.key)
     if (props.currentDay === 17) return getDay17ExplanationHint(currentConcept.value.key)
+    if (props.currentDay === 18) return getDay18ExplanationHint(currentConcept.value.key)
+    if (props.currentDay === 19) return getDay19ExplanationHint(currentConcept.value.key)
+    if (props.currentDay === 20) return getDay20ExplanationHint(currentConcept.value.key)
+    if (props.currentDay === 21) return getDay21ExplanationHint(currentConcept.value.key)
     return getConceptHint(currentConcept.value.key)
   }
   
